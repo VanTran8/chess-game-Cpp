@@ -23,12 +23,12 @@ void remove(vector<Pieces*> &list, const Pieces* value) {
 // Constructor functions for parent class and 6 child classes (Rook, Knight, Bishop, Queen, King, Pawn)
 
 Pieces::Pieces() {
-    bool enPassantCondition = false; // a Pawn move 2 square straight in the first move
+    enPassantCondition = false; // a Pawn move 2 square straight in the first move
 
-    Pieces* tmp = nullptr;
+    tmp = nullptr;
     
-    bool latestMove = false; // used for En Passant
-    bool firstMove = true; //used for castling
+    latestMove = false; // used for En Passant
+    firstMove = true; //used for castling
 }
 
 Rook::Rook(bool colorWhite, std::string name) {

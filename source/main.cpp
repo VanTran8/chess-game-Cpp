@@ -7,4 +7,8 @@
 int main() {
     Board board;
     board.play();
+    
+
+    return 0;
+
 }

@@ -21,55 +21,55 @@ std::string removeSpace_toupper(std::string& a) {
 }
 
 Board::Board() {
-    Turn t = W;
+    t = W;
 
-    Pieces* tmp = nullptr;
+    tmp = nullptr;
 
-    Pieces* latestWhiteMove = nullptr; // used for en Passant; ?? = null
-    Pieces* lastestBlackMove = nullptr;
+    latestWhiteMove = nullptr; // used for en Passant; ?? = null
+    latestBlackMove = nullptr;
 
     //char inputLocations[];
 
-    vector<Position*> historyMove;
-    char control = 'A';
-    int promote = 0;
+    historyMove;
+    control = 'A';
+    promote = 0;
 
-    Pieces* ro1W = new Rook(true, "Ro");
-    Pieces* kn1W = new Knight(true, "Kn");
-    Pieces* bi1W = new Bishop(true, "Bi");
-    Pieces* kiW =  new King(true, "Ki");
-    Pieces* quW = new Queen(true, "Qu");
-    Pieces* bi2W = new Bishop(true, "Bi");
-    Pieces* kn2W = new Knight(true, "Kn");
-    Pieces* ro2W = new Rook(true, "Ro");
+    ro1W = new Rook(true, "Ro");
+    kn1W = new Knight(true, "Kn");
+    bi1W = new Bishop(true, "Bi");
+    kiW =  new King(true, "Ki");
+    quW = new Queen(true, "Qu");
+    bi2W = new Bishop(true, "Bi");
+    kn2W = new Knight(true, "Kn");
+    ro2W = new Rook(true, "Ro");
 
-    Pieces* pa1W = new Pawn(true, "Pa");
-    Pieces* pa2W = new Pawn(true, "Pa");
-    Pieces* pa3W = new Pawn(true, "Pa");
-    Pieces* pa4W = new Pawn(true, "Pa");
-    Pieces* pa5W = new Pawn(true, "Pa");
-    Pieces* pa6W = new Pawn(true, "Pa");
-    Pieces* pa7W = new Pawn(true, "Pa");
-    Pieces* pa8W = new Pawn(true, "Pa");
+    pa1W = new Pawn(true, "Pa");
+    pa2W = new Pawn(true, "Pa");
+    pa3W = new Pawn(true, "Pa");
+    pa4W = new Pawn(true, "Pa");
+    pa5W = new Pawn(true, "Pa");
+    pa6W = new Pawn(true, "Pa");
+    pa7W = new Pawn(true, "Pa");
+    pa8W = new Pawn(true, "Pa");
 
 
-    Pieces* ro1B = new Rook(false, "Ro");
-    Pieces* kn1B = new Knight(false, "Kn");
-    Pieces* bi1B = new Bishop(false, "Bi");
-    Pieces* kiB = new King(false, "Ki");
-    Pieces* quB = new Queen(false, "Qu");
-    Pieces* bi2B = new Bishop(false, "Bi");
-    Pieces* kn2B = new Knight(false, "Kn");
-    Pieces* ro2B = new Rook(false, "Ro");
+    ro1B = new Rook(false, "Ro");
+    kn1B = new Knight(false, "Kn");
+    bi1B = new Bishop(false, "Bi");
+    kiB = new King(false, "Ki");
+    quB = new Queen(false, "Qu");
+    bi2B = new Bishop(false, "Bi");
+    kn2B = new Knight(false, "Kn");
+    ro2B = new Rook(false, "Ro");
 
-    Pieces* pa1B = new Pawn(false, "Pa");
-    Pieces* pa2B = new Pawn(false, "Pa");
-    Pieces* pa3B = new Pawn(false, "Pa");
-    Pieces* pa4B = new Pawn(false, "Pa");
-    Pieces* pa5B = new Pawn(false, "Pa");
-    Pieces* pa6B = new Pawn(false, "Pa");
-    Pieces* pa7B = new Pawn(false, "Pa");
-    Pieces* pa8B = new Pawn(false, "Pa");
+    pa1B = new Pawn(false, "Pa");
+    pa2B = new Pawn(false, "Pa");
+    pa3B = new Pawn(false, "Pa");
+    pa4B = new Pawn(false, "Pa");
+    pa5B = new Pawn(false, "Pa");
+    pa6B = new Pawn(false, "Pa");
+    pa7B = new Pawn(false, "Pa");
+    pa8B = new Pawn(false, "Pa");
 }
 
 
@@ -214,8 +214,8 @@ void Board::paintABoard(){
                 }
             }
             std::cout << '\n';
-            std::cout << "    |          |**********|          |**********|          |**********|          |**********|";
-            std::cout << "    |__________|__________|__________|__________|__________|__________|__________|__________|";
+            std::cout << "    |          |**********|          |**********|          |**********|          |**********|\n";
+            std::cout << "    |__________|__________|__________|__________|__________|__________|__________|__________|\n";
         } else {
             
             std::cout << "    |          |          |          |          |          |          |          |          |\n";
@@ -491,7 +491,7 @@ void Board::inputThePosition(){
     do {
         std::getline(std::cin, a);
         a = removeSpace_toupper(a);
-        if (a == "r") { //................................................................................
+        if (a == "R") { //................................................................................
             control = a;
             break;
         }
@@ -502,17 +502,17 @@ void Board::inputThePosition(){
             std::cout << "Input the right location again, please: ";
         } else {
             
-            if (a[0] < 97 || a[0] > 104
-                || a[2] < 97 || a[2] > 104
-                || a[1] < 49 || a[1] > 56
-                || a[3] < 49 || a[3] > 56) {
+            if (a[0] < 'A' || a[0] > 'H'
+                || a[2] < 'A' || a[2] > 'H'
+                || a[1] < '1' || a[1] > '8'
+                || a[3] < '1' || a[3] > '8') {
                 std::cout << "Input the right location again, please: ";
             }
             else {
-            x1 = a[0] - 96 - 1;
-            x2 = a[2] - 96 - 1;
-            y1 = a[1] - 48 - 1;
-            y2 = a[3] - 48 - 1;
+            x1 = a[0] - 'A';
+            x2 = a[2] - 'A';
+            y1 = a[1] - '1';
+            y2 = a[3] - '1';
             break;
             }
         }
@@ -523,7 +523,7 @@ void Board::inputThePosition(){
 void Board::reverseFunction() {     
     do {
         if (!historyMove.empty()) {
-            if (control == "r") {
+            if (control == "R") {
                 
                     reverseMove();
 
@@ -563,7 +563,7 @@ void Board::play(){
 
                 do {
                     inputThePosition();
-                    if (control == "r") { // 1.2
+                    if (control == "R") { // 1.2
                         reverseFunction();
                         break;
                     }
@@ -595,7 +595,7 @@ void Board::play(){
 
                 do {
                     inputThePosition();
-                    if (control == "r") { // 1.2
+                    if (control == "R") { // 1.2
                         reverseFunction();
                         break;
                     }
